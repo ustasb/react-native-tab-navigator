@@ -173,9 +173,7 @@ let styles = StyleSheet.create({
   defaultSelectedTitle: {
     color: 'rgb(0, 122, 255)',
   },
-  defaultSelectedIcon: {
-    tintColor: 'rgb(0, 122, 255)',
-  },
+  defaultSelectedIcon: {},
 });
 
 TabNavigator.Item = TabNavigatorItem;
