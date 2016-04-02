@@ -20,7 +20,12 @@ export default class TabNavigator extends React.Component {
     sceneStyle: View.propTypes.style,
     tabBarStyle: TabBar.propTypes.style,
     tabBarShadowStyle: TabBar.propTypes.shadowStyle,
-    hidesTabTouch: PropTypes.bool
+    hidesTabTouch: PropTypes.bool,
+    tabTouchOpacity: PropTypes.number,
+  };
+
+  static defaultProps = {
+    tabTouchOpacity: 0.8,
   };
 
   constructor(props, context) {
@@ -121,7 +126,8 @@ export default class TabNavigator extends React.Component {
         ]}
         badge={badge}
         onPress={item.props.onPress}
-        hidesTabTouch={this.props.hidesTabTouch}>
+        hidesTabTouch={this.props.hidesTabTouch}
+        tabTouchOpacity={this.props.tabTouchOpacity}>
         {icon}
       </Tab>
     );

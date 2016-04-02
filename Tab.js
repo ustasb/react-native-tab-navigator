@@ -17,6 +17,7 @@ export default class Tab extends React.Component {
     badge: PropTypes.element,
     onPress: PropTypes.func,
     hidesTabTouch: PropTypes.bool,
+    tabTouchOpacity: PropTypes.number,
     allowFontScaling: PropTypes.bool
   };
 
@@ -49,7 +50,7 @@ export default class Tab extends React.Component {
     let tabStyle = [styles.container, title ? null : styles.untitledContainer];
     return (
       <TouchableOpacity
-        activeOpacity={this.props.hidesTabTouch ? 1.0 : 0.8}
+        activeOpacity={this.props.hidesTabTouch ? 1.0 : this.props.tabTouchOpacity}
         onPress={this._handlePress}
         style={tabStyle}>
         <View>
