@@ -3,6 +3,8 @@
 import { Set } from 'immutable';
 import React, {
   PropTypes,
+} from 'react';
+import {
   StyleSheet,
   View,
 } from 'react-native';
@@ -115,6 +117,7 @@ export default class TabNavigator extends React.Component {
 
     return (
       <Tab
+        testID={item.props.testID}
         title={item.props.title}
         allowFontScaling={item.props.allowFontScaling}
         titleStyle={[
@@ -127,7 +130,8 @@ export default class TabNavigator extends React.Component {
         badge={badge}
         onPress={item.props.onPress}
         hidesTabTouch={this.props.hidesTabTouch}
-        tabTouchOpacity={this.props.tabTouchOpacity}>
+        tabTouchOpacity={this.props.tabTouchOpacity}
+        style={item.props.tabStyle}>
         {icon}
       </Tab>
     );

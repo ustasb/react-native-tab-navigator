@@ -1,7 +1,8 @@
 'use strict';
-
 import React, {
   PropTypes,
+} from 'react';
+import {
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -12,13 +13,15 @@ import Layout from './Layout';
 
 export default class Tab extends React.Component {
   static propTypes = {
+    testID : PropTypes.string,
     title: PropTypes.string,
     titleStyle: Text.propTypes.style,
     badge: PropTypes.element,
     onPress: PropTypes.func,
     hidesTabTouch: PropTypes.bool,
     tabTouchOpacity: PropTypes.number,
-    allowFontScaling: PropTypes.bool
+    allowFontScaling: PropTypes.bool,
+    style: View.propTypes.style,
   };
 
   constructor(props, context) {
@@ -29,7 +32,10 @@ export default class Tab extends React.Component {
 
   render() {
     let { title, badge } = this.props;
-    let icon = React.Children.only(this.props.children);
+    let icon = null;
+    if (React.Children.count(this.props.children) > 0) {
+      icon = React.Children.only(this.props.children);
+    }
 
     if (title) {
       title =
@@ -47,9 +53,14 @@ export default class Tab extends React.Component {
       });
     }
 
-    let tabStyle = [styles.container, title ? null : styles.untitledContainer];
+    let tabStyle = [
+      styles.container,
+      title ? null : styles.untitledContainer,
+      this.props.style,
+    ];
     return (
       <TouchableOpacity
+        testID={this.props.testID}
         activeOpacity={this.props.hidesTabTouch ? 1.0 : this.props.tabTouchOpacity}
         onPress={this._handlePress}
         style={tabStyle}>
